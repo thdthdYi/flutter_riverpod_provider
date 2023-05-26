@@ -18,29 +18,32 @@ class StateProviderScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('StateProvider'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(provider.toString()),
-          ElevatedButton(
-            onPressed: () {
-              //버튼이 실행될 때는 read를 사용.
-              //값을 바꾸고 싶을 때는 notifier 붙여줌
-              ref.read(numberProvider.notifier).update((state) => state + 1);
-            },
-            child: const Text("Up"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              //state에 -1을 한 후에 해당 버튼에 해당하는 state에 덮어씌워줌
-              ref.read(numberProvider.notifier).state = ref
-                  .read(numberProvider.notifier)
-                  .update((state) => state - 1);
-            },
-            child: const Text("Down"),
-          )
-        ],
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(provider.toString()),
+            ElevatedButton(
+              onPressed: () {
+                //버튼이 실행될 때는 read를 사용.
+                //값을 바꾸고 싶을 때는 notifier 붙여줌
+                ref.read(numberProvider.notifier).update((state) => state + 1);
+              },
+              child: const Text("Up"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                //state에 -1을 한 후에 해당 버튼에 해당하는 state에 덮어씌워줌
+                ref.read(numberProvider.notifier).state = ref
+                    .read(numberProvider.notifier)
+                    .update((state) => state - 1);
+              },
+              child: const Text("Down"),
+            )
+          ],
+        ),
       ),
     );
   }

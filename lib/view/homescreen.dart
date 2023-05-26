@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod_provider/view/selectprovider_screen.dart';
 import 'package:flutter_riverpod_provider/view/statenotifierprovider_screen.dart';
 import 'package:flutter_riverpod_provider/view/streamprovider_screen.dart';
 
@@ -6,6 +7,7 @@ import 'disposemodifier_screen.dart';
 import 'familymodifierprovider_screen.dart';
 import 'futureprovider_screen.dart';
 import 'listenprovider_screen.dart';
+import 'providers_screen.dart';
 import 'stateprovider_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -101,6 +103,30 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: const Text('ListnerProvider'),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const SelectProviderScreen(),
+                  ),
+                );
+              },
+              child: const Text('SelectProvider'),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const ProvidersScreen(),
+                  ),
+                );
+              },
+              child: const Text('Provider'),
             ),
           ),
         ],
