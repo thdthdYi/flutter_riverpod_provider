@@ -15,7 +15,11 @@ class StateProviderScreen extends ConsumerWidget {
     final provider = ref.watch(numberProvider);
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('StateProvider'),
+      ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(provider.toString()),
