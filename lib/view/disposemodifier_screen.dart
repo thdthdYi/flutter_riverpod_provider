@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_provider/provider/streamprovider.dart';
+import 'package:flutter_riverpod_provider/provider/disposemodiferprovider.dart';
 
-class StreamProviderScreen extends ConsumerWidget {
-  const StreamProviderScreen({super.key});
+class AutodisposeModifierScreen extends ConsumerWidget {
+  const AutodisposeModifierScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(multipleStreamProvider);
+    final state = ref.watch(autoDisposeModifierProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('StreamProviderScreen'),
+        title: const Text('DisiposeModifierScreen'),
       ),
       body: Center(
           child: state.when(
