@@ -5,6 +5,7 @@ import 'package:flutter_riverpod_provider/view/streamprovider_screen.dart';
 import 'disposemodifier_screen.dart';
 import 'familymodifierprovider_screen.dart';
 import 'futureprovider_screen.dart';
+import 'listenprovider_screen.dart';
 import 'stateprovider_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -88,6 +89,18 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: const Text("AutoDisposeModifierProvider"),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const ListenProviderScreen(),
+                  ),
+                );
+              },
+              child: const Text('ListnerProvider'),
             ),
           ),
         ],
