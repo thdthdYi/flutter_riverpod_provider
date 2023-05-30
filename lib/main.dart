@@ -5,6 +5,7 @@ import 'package:flutter_riverpod_provider/view/homescreen.dart';
 
 void main() {
   //ProviderScope : riverpod 라이브러리를 사용하기 위해 main 상단에 선언
+  //하위 위젯들이 provider객체에 접근할 수 있음
   runApp(ProviderScope(observers: [Logger()], child: MyApp()));
 }
 
