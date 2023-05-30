@@ -12,7 +12,6 @@ class CodeGenerationScreen extends ConsumerWidget {
     final state2 = ref.watch(gStateFutureProvider);
     final state3 = ref.watch(gStateFuture2Provider);
     final state4 = ref.watch(gStateMultiplyProvider(number1: 10, number2: 20));
-    final state5 = ref.watch(gStateNotifierProvider);
 
     return Scaffold(
         appBar: AppBar(
@@ -37,7 +36,21 @@ class CodeGenerationScreen extends ConsumerWidget {
                   error: (error, stack) => Text(error.toString()),
                   loading: () => CircularProgressIndicator()),
               Text('$state4'),
-              Text('$state5'),
+              //Consumer 위젯만 빌더 가능.
+              //부분 랜더링을 활용하기 위한 방법
+              Consumer(
+                builder: (context, ref, child) {
+                  final state5 = ref.watch(gStateNotifierProvider);
+                  return Row(
+                    children: [
+                      Text('$state5'),
+                      //Consumer 위젯이 재빌드 되어도 child 위젯은 빌드 되지 않음.
+                      if (child != null) child,
+                    ],
+                  );
+                },
+                child: Text('hello'),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -63,5 +76,16 @@ class CodeGenerationScreen extends ConsumerWidget {
             ],
           ),
         ));
+  }
+}
+
+class _StateFiveWidget extends ConsumerWidget {
+  const _StateFiveWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state5 = ref.watch(gStateNotifierProvider);
+
+    return Text('$state5');
   }
 }
